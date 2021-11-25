@@ -1,0 +1,41 @@
+---
+title: "Shiny Application and Reproducible Pitch"
+author: "tishita goel"
+date: "25/11/2021"
+output: ioslides_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Project Goal
+
+There are two components to this peer-reviewed assignment. You'll start by building a Shiny application and deploying it to Rstudio's servers. Second, you'll create a reproducible pitch presentation for your application using Slidify or Rstudio Presenter.
+
+## Steps to Perform
+
+1. Create a shiny application and accompanying documentation. The documentation should be viewed as everything a user will need to get up and running with your programme.
+2. Use Rstudio's shiny server to deploy the app.
+3. Paste the app's link into the given text box to share it.
+4. Share your server.R and ui.R codes on github
+
+## How to use the application
+
+We design a linear model to predict a child's height based on the gender and average height of the parents using data from the Galton Families dataset.
+
+The application is running on (https://tishitagoel.shinyapps.io/Reproducible_Pitch/)
+
+ui.R, and Server.R Code in my github repository (https://github.com/tishitagoel/DDP-Week-4)
+
+## Plot
+```{r plot,warning=FALSE}
+library(HistData)
+##The GaltonFamilies dataset provided the data for the app. 
+data(GaltonFamilies)
+library(HistData)
+data(GaltonFamilies)
+plot(jitter(GaltonFamilies$childHeight) ~ GaltonFamilies$midparentHeight,xlab="Average Height of the Parents (in inches)",ylab="Height of the Child (in inches)",main="Scatterplot of Galton Family Data",pch=19,frame.plot=FALSE,col=ifelse(GaltonFamilies$gender=="female", "pink", "light blue"))
+legend(65,80,pch=c(19,19),col=c("pink","light blue"),c("female", "male"),bty="o",cex=.8)
+```
